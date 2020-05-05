@@ -43,6 +43,9 @@
   border: 0;
   border-radius: 3rem;
   outline: none;
+  transition: transform $tr-base;
+  transform-origin: 100% 50%;
+  animation: scaleX 0.5s;
 
   &:focus {
     border: 1px solid $c-purple;
