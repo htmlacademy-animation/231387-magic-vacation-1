@@ -305,6 +305,12 @@
 
 .screen--prizes {
   background-color: $c-dark;
+
+  &.active {
+    .overlay {
+      animation-name: show-overlay;
+    }
+  }
 }
 
 .screen--game {

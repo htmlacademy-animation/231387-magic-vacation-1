@@ -1,0 +1,19 @@
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $c-purple;
+  animation-duration: 0.8s;
+  animation-timing-function: cubic-bezier(.52,.13,.1,1.02);
+  animation-fill-mode: forwards;
+}
+
+@keyframes show-overlay {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
