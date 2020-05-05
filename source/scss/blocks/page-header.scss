@@ -35,6 +35,9 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+  transition: transform 0.4s cubic-bezier(0.5, 0.76, 0.67, 1.04);
+  transform: translateX(-30px);
+  opacity: 0;
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -177,6 +180,9 @@
   font-size: 1.2rem;
   line-height: 1.0418;
   color: $c-light;
+  transition: transform 0.4s cubic-bezier(0.5, 0.76, 0.67, 1.04);
+  transform: translateX(30px);
+  opacity: 0;
 
   @media (min-width: $stop-scaling) {
     font-size: 12px;
@@ -309,5 +315,13 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     margin-left: 0;
     width: 100%;
+  }
+}
+
+body.loaded {
+  .page-header__logo,
+  .page-header__menu {
+    opacity: 1;
+    transform: translate(0);
   }
 }
