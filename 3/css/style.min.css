@@ -2530,9 +2530,11 @@ body.loaded .page-header__menu {
   flex-direction: column;
   min-height: 100vh;
   z-index: 1;
-  overflow: hidden; }
+  overflow: hidden;
+  visibility: visible; }
   .screen--hidden {
-    display: none; }
+    display: none;
+    visibility: hidden; }
   @media (max-width: 1024px) and (orientation: portrait) {
     .screen {
       min-height: calc(var(--vh, 1vh) * 100); } }
@@ -2800,8 +2802,6 @@ body.loaded .page-header__menu {
 
 .screen--prizes {
   background-color: #5f458c; }
-  .screen--prizes.active .overlay {
-    animation-name: show-overlay; }
 
 .screen--game {
   position: relative;
@@ -3300,10 +3300,13 @@ body.loaded .screen__footer {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #a67ee5;
-  animation-duration: 0.8s;
+  background-color: #5f458c;
   animation-timing-function: cubic-bezier(0.52, 0.13, 0.1, 1.02);
-  animation-fill-mode: forwards; }
+  animation-fill-mode: forwards;
+  z-index: 1; }
+  .overlay.show {
+    animation-name: show-overlay;
+    animation-duration: 0.8s; }
 
 @keyframes show-overlay {
   0% {
