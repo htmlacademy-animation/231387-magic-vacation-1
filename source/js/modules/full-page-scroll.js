@@ -9,34 +9,48 @@ export default class FullPageScroll {
 
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
-    this.onUrlHashChengedHandler = this.onUrlHashChenged.bind(this);
+    this.onUrlHashChangedHandler = this.onUrlHashChanged.bind(this);
   }
 
   init() {
     document.addEventListener(`wheel`, throttle(this.onScrollHandler, this.THROTTLE_TIMEOUT));
-    window.addEventListener(`popstate`, this.onUrlHashChengedHandler);
+    window.addEventListener(`popstate`, this.onUrlHashChangedHandler);
 
-    this.onUrlHashChenged();
-    this.changePageDisplay();
+    this.onUrlHashChanged();
+    this.checkAnimationDisplay();
   }
 
   onScroll(evt) {
     const currentPosition = this.activeScreen;
     this.reCalculateActiveScreenPosition(evt.deltaY);
     if (currentPosition !== this.activeScreen) {
+      this.checkAnimationDisplay();
+    }
+  }
+
+  onUrlHashChanged() {
+    const newIndex = Array.from(this.screenElements).findIndex((screen) => location.hash.slice(1) === screen.id);
+    this.activeScreen = (newIndex < 0) ? 0 : newIndex;
+    this.checkAnimationDisplay();
+  }
+
+  checkAnimationDisplay() {
+    const overlay = document.querySelector(`.overlay`);
+    const animatedScreen = document.querySelector(`.animate-overlay.active`);
+    if (animatedScreen && this.screenElements[this.activeScreen].id === `prizes`) {
+      overlay.classList.add(`show`);
+      overlay.addEventListener(`animationend`, () => {
+        this.changePageDisplay();
+        overlay.classList.remove(`show`);
+      });
+    } else {
       this.changePageDisplay();
     }
   }
 
-  onUrlHashChenged() {
-    const newIndex = Array.from(this.screenElements).findIndex((screen) => location.hash.slice(1) === screen.id);
-    this.activeScreen = (newIndex < 0) ? 0 : newIndex;
-    this.changePageDisplay();
-  }
-
   changePageDisplay() {
-    this.changeVisibilityDisplay();
     this.changeActiveMenuItem();
+    this.changeVisibilityDisplay();
     this.emitChangeDisplayEvent();
   }
 
