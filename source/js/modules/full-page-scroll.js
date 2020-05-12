@@ -17,25 +17,40 @@ export default class FullPageScroll {
     window.addEventListener(`popstate`, this.onUrlHashChengedHandler);
 
     this.onUrlHashChanged();
+    this.checkAnimationDisplay();
   }
 
   onScroll(evt) {
     const currentPosition = this.activeScreen;
     this.reCalculateActiveScreenPosition(evt.deltaY);
     if (currentPosition !== this.activeScreen) {
-      this.changePageDisplay();
+      this.checkAnimationDisplay();
     }
   }
 
   onUrlHashChanged() {
     const newIndex = Array.from(this.screenElements).findIndex((screen) => location.hash.slice(1) === screen.id);
     this.activeScreen = (newIndex < 0) ? 0 : newIndex;
-    this.changePageDisplay();
+    this.checkAnimationDisplay();
+  }
+
+  checkAnimationDisplay() {
+    const overlay = document.querySelector(`.overlay`);
+    const animatedScreen = document.querySelector(`.animate-overlay.active`);
+    if (animatedScreen && this.screenElements[this.activeScreen].id === `prizes`) {
+      overlay.classList.add(`show`);
+      overlay.addEventListener(`animationend`, () => {
+        this.changePageDisplay();
+        overlay.classList.remove(`show`);
+      });
+    } else {
+      this.changePageDisplay();
+    }
   }
 
   changePageDisplay() {
-    this.changeVisibilityDisplay();
     this.changeActiveMenuItem();
+    this.changeVisibilityDisplay();
     this.emitChangeDisplayEvent();
   }
 
