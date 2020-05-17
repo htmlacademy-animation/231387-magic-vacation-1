@@ -1,0 +1,16 @@
+.accent-typo {
+
+  &__word {
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  &__word > span {
+    transform: translate3d(0, 1em, 0);
+    display: inline-block;
+  }
+
+  &.active &__word > span {
+    transform: translate3d(0, 0, 0);
+  }
+}
