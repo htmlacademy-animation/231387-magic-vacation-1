@@ -1,7 +1,17 @@
 @keyframes fadeIn {
   0% {
     opacity: 0;
-    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(1.6rem);
   }
 
   100% {
@@ -13,7 +23,7 @@
 @keyframes fadeInRight {
   0% {
     opacity: 0;
-    transform: translateX(20px);
+    transform: translateX(1.6rem);
   }
 
   100% {
@@ -39,5 +49,15 @@
 
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes scaleBtn {
+  0% {
+    transform: translate(-50%, -50%) scaleX(0);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scaleX(1);
   }
 }
