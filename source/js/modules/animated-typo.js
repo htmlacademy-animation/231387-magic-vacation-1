@@ -1,9 +1,9 @@
 export default () => {
   class AccentTypographyBuild {
     constructor(elementSelector,
-                timer,
-                classForActivate,
-                property) {
+        timer,
+        classForActivate,
+        property) {
       this._TIME_SPACE = 100;
 
       this._elementSelector = elementSelector;
@@ -28,7 +28,7 @@ export default () => {
       if (!this._element) {
         return;
       }
-      const text = this._element.textContent.trim().split(` `).filter((latter) => latter !== '');
+      const text = this._element.textContent.trim().split(` `).filter((latter) => latter !== ``);
 
       const content = text.reduce((fragmentParent, word) => {
         const wordElement = Array.from(word).reduce((fragment, latter) => {
