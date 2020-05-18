@@ -1,13 +1,15 @@
 .accent-typo {
-
   &__word {
     display: inline-block;
     overflow: hidden;
+    padding: 0.5rem 0.15rem;
   }
 
   &__word > span {
     transform: translate3d(0, 1em, 0);
     display: inline-block;
+    margin: 0.2em 0 -0.2em;
+    vertical-align: middle;
   }
 
   &.active &__word > span {
