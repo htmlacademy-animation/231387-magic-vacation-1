@@ -9,6 +9,7 @@ import result from './modules/result.js';
 import form from './modules/form.js';
 import social from './modules/social.js';
 import rules from './modules/rules.js';
+import typo from './modules/animated-typo.js';
 import FullPageScroll from './modules/full-page-scroll';
 
 // init modules
@@ -22,6 +23,7 @@ result();
 form();
 social();
 rules();
+typo();
 
 const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
