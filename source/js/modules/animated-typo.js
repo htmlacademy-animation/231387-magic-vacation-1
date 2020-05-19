@@ -13,7 +13,7 @@ export default () => {
       this._element = document.querySelector(this._elementSelector);
       this._timeOffset = Math.round(Math.random() * 800);
 
-      this.prePareText();
+      this.prepareText();
     }
 
     createElement(letter) {
@@ -24,15 +24,15 @@ export default () => {
       return span;
     }
 
-    prePareText() {
+    prepareText() {
       if (!this._element) {
         return;
       }
-      const text = this._element.textContent.trim().split(` `).filter((latter) => latter !== ``);
+      const text = this._element.textContent.trim().split(` `).filter((letter) => letter !== ``);
 
       const content = text.reduce((fragmentParent, word) => {
-        const wordElement = Array.from(word).reduce((fragment, latter) => {
-          fragment.appendChild(this.createElement(latter));
+        const wordElement = Array.from(word).reduce((fragment, letter) => {
+          fragment.appendChild(this.createElement(letter));
           return fragment;
         }, document.createDocumentFragment());
         const wordContainer = document.createElement(`span`);

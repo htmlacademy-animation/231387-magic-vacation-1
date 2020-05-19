@@ -61,3 +61,21 @@
     transform: translate(-50%, -50%) scaleX(1);
   }
 }
+
+@keyframes rollInLeft {
+  0% {
+    transform: translateX(-5rem) rotate(-180deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+@keyframes rollInRight {
+  0% {
+    transform: translateX(5rem) rotate(180deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
